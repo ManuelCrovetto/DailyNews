@@ -1,0 +1,143 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Theme.DailyNews" parent="Theme.MaterialComponents.DayNight.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/purple_500</item>
+        <item name="colorPrimaryVariant">@color/purple_700</item>
+        <item name="colorOnPrimary">@color/white</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/teal_200</item>
+        <item name="colorSecondaryVariant">@color/teal_700</item>
+        <item name="colorOnSecondary">@color/black</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorOnPrimary</item>
+        <!-- Customize your theme here. -->
+        //This will allow us to see the icons in the status bar while is white, which gives a very minimalistic feeling.
+        <item name="android:windowLightStatusBar" tools:targetApi="m">true</item>
+    </style>
+
+    <style name="Theme.DailyNews.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="Caption_One">
+        <item name="fontFamily">@font/inter_bold</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/neutral_black</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:text">@string/loading_placeholder</item>
+    </style>
+
+    <style name="Caption_Two">
+        <item name="fontFamily">@font/inter_light</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/neutral_dark_gray</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:text">@string/loading_placeholder</item>
+    </style>
+
+    <style name="Caption_Two_Medium">
+        <item name="fontFamily">@font/inter_light</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/neutral_dark_gray</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:text">@string/loading_placeholder</item>
+    </style>
+
+    <style name="Caption_Two_Large">
+        <item name="fontFamily">@font/inter_light</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/neutral_dark_gray</item>
+        <item name="android:maxLines">1</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:text">@string/loading_placeholder</item>
+    </style>
+
+    <style name="Headline">
+        <item name="fontFamily">@font/inter_bold</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/neutral_black</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:text">@string/loading_placeholder</item>
+    </style>
+
+    <style name="Headline_Medium">
+        <item name="fontFamily">@font/inter_bold</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/neutral_black</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:text">@string/loading_placeholder</item>
+    </style>
+
+    <style name="Headline_Large">
+        <item name="fontFamily">@font/inter_bold</item>
+        <item name="android:textSize">24sp</item>
+        <item name="android:textColor">@color/neutral_black</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:text">@string/loading_placeholder</item>
+    </style>
+
+    <style name="Body_One">
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/neutral_black</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:text">@string/loading_placeholder</item>
+    </style>
+
+    <style name="Body_One_Medium">
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/neutral_black</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:text">@string/loading_placeholder</item>
+    </style>
+
+    <style name="Body_One_Large">
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:textSize">21sp</item>
+        <item name="android:textColor">@color/neutral_black</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:text">@string/loading_placeholder</item>
+    </style>
+
+    <style name="Headline_Featured">
+        <item name="fontFamily">@font/inter_bold</item>
+        <item name="android:textSize">17sp</item>
+        <item name="android:textColor">@color/neutral_white</item>
+        <item name="android:maxLines">2</item>
+        <item name="android:textAlignment">textStart</item>
+        <item name="android:ellipsize">end</item>
+        <item name="android:text">@string/loading_placeholder</item>
+    </style>
+
+    <style name="Body_One_Featured">
+        <item name="fontFamily">@font/inter_regular</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/neutral_white</item>
+        <item name="android:textAlignment">textEnd</item>
+        <item name="android:text">@string/loading_placeholder</item>
+    </style>
+
+
+    <style name="Splashscreen" parent="Theme.DailyNews">
+        <item name="android:windowBackground">@drawable/splash_screen</item>
+    </style>
+
+
+</resources>

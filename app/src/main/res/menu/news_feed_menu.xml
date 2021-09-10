@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    >
+    <item
+        android:id="@+id/btnContact9to5"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_information"
+        android:title="@string/contact_9to5_placeholder" />
+</menu>

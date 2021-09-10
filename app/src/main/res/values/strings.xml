@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">DailyNews</string>
+    <string name="lost_connection_snack_bar_placeholder">Connection lost. Reconnecting…</string>
+    <string name="reconnected_snack_bar_placeholder">Connected</string>
+    <string name="error_description_dialog_placeholder">Oops, an error occurred, try again later please!</string>
+    <string name="ok_placeholder">OK</string>
+    <string name="loading_placeholder">Loading…</string>
+    <string name="change_font_size_placeholder">Change font size</string>
+    <string name="oops_an_error_occurred_try_again_later_please_placeholder">Oops, an error occurred, try again later please!</string>
+    <string name="change_text_size_title_placeholder">Change text size</string>
+    <string name="contact_9to5_placeholder">Contact 9to5</string>
+
+</resources>

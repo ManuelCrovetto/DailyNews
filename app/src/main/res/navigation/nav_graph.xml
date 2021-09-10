@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/newsFeedFragment">
+
+    <fragment
+        android:id="@+id/newsFeedFragment"
+        android:name="com.macrosystems.dailynews.ui.view.fragments.NewsFeedFragment"
+        tools:layout="@layout/news_feed_fragment">
+        <action
+            android:id="@+id/action_newsFeedFragment_to_detailedNewsFragment"
+            app:destination="@id/detailedNewsFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"/>
+    </fragment>
+    <fragment
+        android:id="@+id/detailedNewsFragment"
+        android:name="com.macrosystems.dailynews.ui.view.fragments.DetailedNewsFragment"
+        tools:layout="@layout/detailed_news_fragment">
+        <argument
+            android:name="newsDetails"
+            app:argType="com.macrosystems.dailynews.data.model.parcelable.DetailedNewsParcelable" />
+    </fragment>
+</navigation>
