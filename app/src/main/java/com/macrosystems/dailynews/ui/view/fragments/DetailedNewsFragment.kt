@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.os.Bundle
 import android.view.*
 import android.webkit.WebSettings
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -11,7 +12,7 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.RequestManager
 
-import com.macrosystems.beerfinder.core.dialog.launcher.DialogFragmentLauncher
+import com.macrosystems.dailynews.core.dialog.launcher.DialogFragmentLauncher
 import com.macrosystems.dailynews.R
 import com.macrosystems.dailynews.core.dialog.ErrorDialog
 import com.macrosystems.dailynews.core.ex.*
@@ -67,11 +68,11 @@ class DetailedNewsFragment @Inject constructor(
 
     private fun handleUI(viewState: DetailedNewsViewState, detailedNews: DetailedNewsParcelable) {
         with(binding) {
-            if (!viewState.emptyImageUrl) glide.load(detailedNews.imageUrl).into(ivHeaderImage)
-            if (!viewState.emptyTitle) tvTitle.text = detailedNews.title
-            if (!viewState.emptyDate) tvDate.text = detailedNews.date
-            if (!viewState.emptyDescription) tvDescription.text = detailedNews.description
-            if (!viewState.emptyVideoUrl) setupVideo(detailedNews.videoUrl)
+            if (!viewState.emptyImageUrl) glide.load(detailedNews.imageUrl).into(ivHeaderImage) else ivHeaderImage.isGone = true
+            if (!viewState.emptyTitle) tvTitle.text = detailedNews.title else tvTitle.isGone = true
+            if (!viewState.emptyDate) tvDate.text = detailedNews.date else tvDate.isGone = true
+            if (!viewState.emptyDescription) tvDescription.text = detailedNews.description else tvDescription.isGone = true
+            if (!viewState.emptyVideoUrl) setupVideo(detailedNews.videoUrl) else wvVideo.isGone = true
         }
     }
 

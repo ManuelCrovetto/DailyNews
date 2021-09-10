@@ -19,7 +19,7 @@ class NewsFeedAdapter @Inject constructor(private val glide: RequestManager): Re
 
     @SuppressLint("NotifyDataSetChanged")
     fun setData(data: MutableList<NewsResponse>) {
-        data.removeAt(0)
+        if (data.size < 0) data.removeAt(0)
         newsFeed = data
         notifyDataSetChanged()
     }

@@ -3,7 +3,7 @@ package com.macrosystems.dailynews.ui.factory
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentFactory
 import com.bumptech.glide.RequestManager
-import com.macrosystems.beerfinder.core.dialog.launcher.DialogFragmentLauncher
+import com.macrosystems.dailynews.core.dialog.launcher.DialogFragmentLauncher
 import com.macrosystems.dailynews.ui.adapters.NewsFeedAdapter
 import com.macrosystems.dailynews.ui.view.fragments.DetailedNewsFragment
 import com.macrosystems.dailynews.ui.view.fragments.NewsFeedFragment

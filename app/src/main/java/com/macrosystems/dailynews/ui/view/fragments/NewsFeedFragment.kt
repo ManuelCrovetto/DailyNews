@@ -13,11 +13,12 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.bumptech.glide.RequestManager
 import com.daimajia.androidanimations.library.Techniques
 import com.daimajia.androidanimations.library.YoYo
-import com.macrosystems.beerfinder.core.dialog.launcher.DialogFragmentLauncher
+import com.macrosystems.dailynews.core.dialog.launcher.DialogFragmentLauncher
 import com.macrosystems.dailynews.R
 import com.macrosystems.dailynews.core.dialog.ErrorDialog
 import com.macrosystems.dailynews.core.ex.parseNewsDetailsFromHtml
 import com.macrosystems.dailynews.core.ex.showDialog
+import com.macrosystems.dailynews.data.model.constants.Constants.ANIMATION_TIME_LENGTH
 import com.macrosystems.dailynews.data.model.constants.Constants.NINE_TO_FIVE_WEB_URL
 import com.macrosystems.dailynews.data.model.parcelable.DetailedNewsParcelable
 import com.macrosystems.dailynews.databinding.NewsFeedFragmentBinding
@@ -96,7 +97,7 @@ class NewsFeedFragment @Inject constructor(
     }
 
     private fun loadFeaturedNews(featuredNews: DetailedNewsParcelable) {
-        YoYo.with(Techniques.SlideInDown).duration(777).playOn(binding.clFeaturedNewsLayout)
+        YoYo.with(Techniques.SlideInDown).duration(ANIMATION_TIME_LENGTH).playOn(binding.clFeaturedNewsLayout)
         binding.clFeaturedNewsLayout.isVisible = true
 
         glide.load(featuredNews.imageUrl).into(binding.ivFeaturedNew)
@@ -116,6 +117,7 @@ class NewsFeedFragment @Inject constructor(
             description = getString(R.string.error_description_dialog_placeholder),
             isDialogCancelable = true,
             positiveAction = ErrorDialog.Action(getString(R.string.ok_placeholder)) {
+                viewModel.getNewsFeedList()
                 it.dismiss()
             }
         ).showDialog(dialogFragmentLauncher = dialogFragmentLauncher, requireActivity())

@@ -1,4 +1,4 @@
- package com.macrosystems.beerfinder.core.dialog.launcher
+ package com.macrosystems.dailynews.core.dialog.launcher
 
 import androidx.fragment.app.DialogFragment
 import androidx.fragment.app.FragmentActivity
