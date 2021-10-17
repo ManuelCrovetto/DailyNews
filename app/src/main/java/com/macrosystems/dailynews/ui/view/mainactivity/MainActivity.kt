@@ -46,16 +46,6 @@ class MainActivity : AppCompatActivity() {
         setOnDestinationListenerForPersonalizedBackButton()
     }
 
-    override fun onRestart() {
-        supportFragmentManager.fragmentFactory = fragmentFactory
-        super.onRestart()
-    }
-    override fun onResume() {
-        supportFragmentManager.fragmentFactory = fragmentFactory
-        super.onResume()
-
-    }
-
     private fun setUpToolbar() {
         setSupportActionBar(binding.toolbar)
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
