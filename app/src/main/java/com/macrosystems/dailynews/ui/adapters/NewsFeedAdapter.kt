@@ -8,7 +8,11 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.RequestManager
 import com.macrosystems.dailynews.R
 import com.macrosystems.dailynews.data.model.news.NewsResponse
+import dagger.hilt.InstallIn
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.components.FragmentComponent
 import javax.inject.Inject
+import javax.inject.Singleton
 
 class NewsFeedAdapter @Inject constructor(private val glide: RequestManager): RecyclerView.Adapter<NewsFeedViewHolder>() {
 

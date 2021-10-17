@@ -6,10 +6,16 @@ import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.LifecycleObserver
 import androidx.lifecycle.OnLifecycleEvent
 import com.macrosystems.dailynews.core.delegate.weak
+import dagger.Module
+import dagger.hilt.InstallIn
+import dagger.hilt.android.AndroidEntryPoint
+import dagger.hilt.android.components.FragmentComponent
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Inject
+import javax.inject.Singleton
 
 
-/**
+ /**
  * This class exposes a safe way to show dialog fragments.
  *
  * The default behavior for [androidx.fragment.app.DialogFragment] when calling the
