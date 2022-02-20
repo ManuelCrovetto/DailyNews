@@ -23,6 +23,7 @@
         tools:layout="@layout/detailed_news_fragment">
         <argument
             android:name="newsDetails"
-            app:argType="com.macrosystems.dailynews.data.model.parcelable.DetailedNewsParcelable" />
+            app:argType="com.macrosystems.dailynews.data.model.parcelable.DetailedNewsParcelable"
+            app:nullable="true" />
     </fragment>
 </navigation>

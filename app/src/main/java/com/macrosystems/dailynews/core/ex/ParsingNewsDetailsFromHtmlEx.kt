@@ -8,20 +8,22 @@ import org.jsoup.nodes.Element
 import org.jsoup.select.Elements
 
 
-fun NewsResponse.parseNewsDetailsFromHtml(): DetailedNewsParcelable {
-
-    val html: Document = Jsoup.parse(this.content.rendered)
-    val imageUrl = html.select("img").first()
-    val iframe = html.select("iframe").first()
-    val description = html.select("p")
-    return DetailedNewsParcelable(
-        imageUrl = imageUrl.attr("src"),
-        title = this.title.rendered,
-        date = this.date.formatDate().orEmpty(),
-        description = checkIfEmptyDescription(description),
-        videoUrl = checkIfiFrameIsNull(iframe).orEmpty()
-    )
-
+fun NewsResponse.parseNewsDetailsFromHtml(): DetailedNewsParcelable? {
+    return try {
+        val html: Document = Jsoup.parse(this.content.rendered)
+        val imageUrl = html.select("img").first()
+        val iframe = html.select("iframe").first()
+        val description = html.select("p")
+        DetailedNewsParcelable(
+            imageUrl = imageUrl.attr("src"),
+            title = this.title.rendered,
+            date = this.date.formatDate().orEmpty(),
+            description = checkIfEmptyDescription(description),
+            videoUrl = checkIfiFrameIsNull(iframe).orEmpty()
+        )
+    } catch (e: Exception) {
+        null
+    }
 }
 
 private fun checkIfEmptyDescription(description: Elements): String {
