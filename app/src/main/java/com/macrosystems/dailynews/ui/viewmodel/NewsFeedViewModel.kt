@@ -11,9 +11,12 @@ import com.macrosystems.dailynews.data.network.response.Result
 import com.macrosystems.dailynews.domain.GetNewsFeed
 import com.macrosystems.dailynews.ui.view.viewstate.NewsFeedViewState
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Dispatchers.IO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.asStateFlow
+import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,8 +24,7 @@ import javax.inject.Inject
 class NewsFeedViewModel @Inject constructor(private val getNewsFeed: GetNewsFeed): ViewModel() {
 
     private val _viewState = MutableStateFlow(NewsFeedViewState())
-    val viewState: StateFlow<NewsFeedViewState>
-        get() = _viewState
+    val viewState = _viewState.asStateFlow()
 
     private val _newsFeedList = MutableLiveData<MutableList<NewsResponse>>()
     val newsFeedList: LiveData<MutableList<NewsResponse>>

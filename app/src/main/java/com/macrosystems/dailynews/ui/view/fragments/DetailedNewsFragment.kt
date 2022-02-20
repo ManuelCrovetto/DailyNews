@@ -47,9 +47,9 @@ class DetailedNewsFragment @Inject constructor(
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         setHasOptionsMenu(true)
 
-        args?.let { it ->
-            viewModel.validateNewsDetails(it.newsDetails)
-            initObservers(it.newsDetails)
+        args?.newsDetails?.let { it ->
+            viewModel.validateNewsDetails(it)
+            initObservers(it)
         } ?: run {
             showErrorDialog()
         }
