@@ -57,9 +57,9 @@ class NewsFeedViewModel @Inject constructor(private val getNewsFeed: GetNewsFeed
                         _newsFeedList.postValue(mutableListOf())
                         _viewState.value = NewsFeedViewState(isLoading = false, success = true, isEmptyList = true)
                     } else {
+                        _viewState.value = NewsFeedViewState(isLoading = false, success = true)
                         _featuredNews.postValue(result.data[0].parseNewsDetailsFromHtml())
                         _newsFeedList.postValue(result.data.toMutableList())
-                        _viewState.value = NewsFeedViewState(isLoading = false, success = true)
                     }
                 }
             }
