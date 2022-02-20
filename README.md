@@ -27,3 +27,11 @@ Small news application to show some local news :)
   
   ## REST API
   * Retrofit
+  
+  ## Testing
+  * MockK
+  * Turbine
+  * Arch Core Testing
+  * Coroutines Test
+  * Truth
+  * JUnit
