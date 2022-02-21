@@ -5,6 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.macrosystems.dailynews.core.ex.parseNewsDetailsFromHtml
+import com.macrosystems.dailynews.core.providers.DefaultDispatchers
 import com.macrosystems.dailynews.data.model.news.NewsResponse
 import com.macrosystems.dailynews.data.model.parcelable.DetailedNewsParcelable
 import com.macrosystems.dailynews.data.network.response.Result
@@ -21,7 +22,8 @@ import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
-class NewsFeedViewModel @Inject constructor(private val getNewsFeed: GetNewsFeed): ViewModel() {
+class NewsFeedViewModel @Inject constructor(private val getNewsFeed: GetNewsFeed,
+private val defaultDispatchers: DefaultDispatchers): ViewModel() {
 
     private val _viewState = MutableStateFlow(NewsFeedViewState())
     val viewState = _viewState.asStateFlow()
@@ -39,7 +41,7 @@ class NewsFeedViewModel @Inject constructor(private val getNewsFeed: GetNewsFeed
     }
 
     fun getNewsFeedList() {
-        viewModelScope.launch(IO) {
+        viewModelScope.launch(defaultDispatchers.io) {
             _viewState.value = NewsFeedViewState(isLoading = true)
 
             when (val result = getNewsFeed()){
