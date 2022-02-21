@@ -2,6 +2,7 @@ package com.macrosystems.dailynews.ui.viewmodel
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import app.cash.turbine.test
+import com.macrosystems.dailynews.core.providers.TestDispatchers
 import com.macrosystems.dailynews.data.model.news.*
 import com.macrosystems.dailynews.data.network.response.Result
 import com.macrosystems.dailynews.domain.GetNewsFeed
@@ -19,6 +20,7 @@ import org.junit.After
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
+import kotlin.time.Duration.Companion.seconds
 import kotlin.time.ExperimentalTime
 
 @ExperimentalTime
@@ -33,11 +35,14 @@ class NewsFeedViewModelTest {
 
     private lateinit var newsFeedViewModel: NewsFeedViewModel
 
+    private lateinit var testDispatchers: TestDispatchers
+
     @Before
     fun setUp() {
         MockKAnnotations.init(this)
-        newsFeedViewModel = NewsFeedViewModel(getNewsFeed)
-        Dispatchers.setMain(Dispatchers.Unconfined)
+        testDispatchers = TestDispatchers()
+        newsFeedViewModel = NewsFeedViewModel(getNewsFeed, testDispatchers)
+        Dispatchers.setMain(testDispatchers.testDispatcher)
     }
 
     @After
@@ -109,34 +114,28 @@ class NewsFeedViewModelTest {
     @Test
     fun `viewStateFlow (MutableStateFlow), mutates state as desired when getNewsFeed returns ResultError with empty exception message`() =
         runTest {
-            withContext(Dispatchers.Default) {
-                coEvery { getNewsFeed() } returns Result.Error(null)
-                newsFeedViewModel.viewState.test {
-                    newsFeedViewModel.getNewsFeedList()
-                    val initialState = awaitItem()
-                    val finalState = awaitItem()
-                    assert(initialState.isLoading)
-                    assert(!finalState.isLoading && finalState.isEmptyList)
-                    cancelAndConsumeRemainingEvents()
-                }
+            coEvery { getNewsFeed() } returns Result.Error(null)
+            newsFeedViewModel.viewState.test {
+                newsFeedViewModel.getNewsFeedList()
+                val initialState = awaitItem()
+                val finalState = awaitItem()
+                assert(initialState.isLoading)
+                assert(!finalState.isLoading && finalState.isEmptyList)
+                cancelAndConsumeRemainingEvents()
             }
-
-
         }
 
     @Test
     fun `viewStateFlow (MutableStateFlow), mutates state as desired when getNewsFeed returns ResultError with exception message`() =
         runTest {
-            withContext(Dispatchers.Default) {
-                coEvery { getNewsFeed() } returns Result.Error(Exception("network error"))
-                newsFeedViewModel.viewState.test {
-                    newsFeedViewModel.getNewsFeedList()
-                    val initialState = awaitItem()
-                    val finalState = awaitItem()
-                    assert(initialState.isLoading)
-                    assert(!finalState.isLoading && finalState.error && finalState.isEmptyList)
-                    cancelAndConsumeRemainingEvents()
-                }
+            coEvery { getNewsFeed() } returns Result.Error(Exception("network error"))
+            newsFeedViewModel.viewState.test(timeout = 3.seconds) {
+                newsFeedViewModel.getNewsFeedList()
+                val initialState = awaitItem()
+                val finalState = awaitItem()
+                assert(initialState.isLoading)
+                assert(!finalState.isLoading && finalState.error && finalState.isEmptyList)
+                cancelAndConsumeRemainingEvents()
             }
         }
 
